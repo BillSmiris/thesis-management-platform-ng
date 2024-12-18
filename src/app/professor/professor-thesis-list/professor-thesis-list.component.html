@@ -1,0 +1,32 @@
+<div *ngIf="fetched then retrievedBlock else notRetrievedBlock"></div>
+<ng-template #retrievedBlock>
+    <div *ngIf="theses.length > 0 then hasTheses else noTheses"></div>
+    <ng-template #hasTheses>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-primary text-center">
+                    <div class="row">
+                        <div class="col-6">Title</div>
+                        <div class="col-6">Student</div>
+                    </div>
+                </li>
+                <li *ngFor="let thesis of theses" class="list-group-item list-group-item-action text-center hover-pointer" (click)=view(thesis.id)>
+                    <div class="row">
+                        <div class="col-6">{{ thesis.title }}</div>
+                        <div class="col-6">{{ thesis.studentFirstName }} {{ thesis.studentLastName }}</div>
+                    </div>
+                </li>
+            </ul>
+    </ng-template>
+    <ng-template #noTheses>
+        There are no supervised theses.
+    </ng-template>
+</ng-template>
+<ng-template #notRetrievedBlock>
+    <div *ngIf="!error then noErrorBlock else errorBlock"></div>
+    <ng-template #noErrorBlock>
+        Loading...
+    </ng-template>
+    <ng-template #errorBlock>
+        There was an error the theses!
+    </ng-template>
+</ng-template>

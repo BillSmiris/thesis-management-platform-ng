@@ -1,0 +1,19 @@
+<!-- w-100 h-100 d-flex align-items-center justify-content-center -->
+<div class="login-form-container">
+    <div class="d-flex flex-column">
+        <div class="head mb-3">
+            <img src="https://oldsite.unipi.gr/unipi/odigos_spoudon/unipilogo.png" alt="" class="logo" width="40%">
+            <h1 class="h3 text-center">University of Piraeus</h1>
+            <h1 class="h3 text-center">Thesis Management Platform</h1>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="formData.username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="formData.password">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="login()"><span class="bi bi-box-arrow-in-right"></span> Log in</button>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<section *ngIf="thesisId" class="d-flex flex-column gap-5">
+    <app-card title="Thesis Info">
+        <app-thesis-view [thesisId]="thesisId"></app-thesis-view>
+    </app-card>
+    <app-card title="Meetings">
+        <app-meetings-view></app-meetings-view>
+    </app-card>
+</section>

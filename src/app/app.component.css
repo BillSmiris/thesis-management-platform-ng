@@ -1,0 +1,38 @@
+.mybar {
+	color: #fff;
+	background-color: #035;
+}
+
+.navbar-brand {
+	display: inline-block;
+	padding-top: .3125rem;
+	padding-bottom: .3125rem;
+	margin-right: 1rem;
+	font-size: 1.25rem;
+	line-height: inherit;
+	white-space: nowrap;
+	color: #fff;
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+@media (max-width:602px) {
+	.hide {
+		display: none;
+	}
+}
+
+@media (max-width:991px) {
+	.hide-edit {
+		display: none;
+	}
+}
+
+.main {
+    padding-top: 6rem;
+	padding-bottom: 4rem;
+}

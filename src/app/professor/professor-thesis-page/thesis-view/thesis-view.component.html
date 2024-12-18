@@ -1,0 +1,52 @@
+<div *ngIf="fetched then retrievedBlock else notRetrievedBlock"></div>
+<ng-template #retrievedBlock>
+    <div *ngIf="thesis then hasThesis else noThesis"></div>
+    <ng-template #hasThesis>
+        <p>
+            <strong>Title:</strong> {{ thesis!.title }}<br>
+            <strong>Start Date:</strong> {{ thesis!.startDate }}<br>
+            <strong>Final Grade:</strong> {{ thesis!.finalGrade }}
+        </p>
+
+        <div class="mb-3">
+            <h6 class="text-secondary">Programming Languages:</h6>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let lang of thesis!.programmingLanguages">
+                    {{ lang }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="mb-3">
+            <h6 class="text-secondary">Technologies:</h6>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let tech of thesis!.technologies">
+                    {{ tech }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h6 class="text-secondary">Student Information:</h6>
+            <p class="card-text">
+                <strong>Name:</strong> {{ thesis!.studentFirstName }} {{ thesis!.studentLastName }}<br>
+                <strong>Email: </strong> 
+                <a [href]="'mailto:' + thesis!.studentEmail">{{ thesis!.studentEmail }}</a><br>
+                <strong>Phone Number: </strong> 
+                <a [href]="'tel:' + thesis!.studentPhoneNumber">{{ thesis!.studentPhoneNumber }}</a>
+            </p>
+        </div>
+    </ng-template>
+    <ng-template #noThesis>
+        There is no available thesis.
+    </ng-template>
+</ng-template>
+<ng-template #notRetrievedBlock>
+    <div *ngIf="!error then noErrorBlock else errorBlock"></div>
+    <ng-template #noErrorBlock>
+        Loading...
+    </ng-template>
+    <ng-template #errorBlock>
+        There was an error retrieving your thesis information!
+    </ng-template>
+</ng-template>

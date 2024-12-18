@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+/*login button*/
+.btn-primary {
+	color: #fff;
+	background-color: #035;
+	border-color: #035;
+}
+
+.btn-primary:hover {
+	color: #035;
+	background-color: #fff;
+	border-color: #035;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+	color: #fff;
+	background-color: #666;
+	border-color: #666
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #035;
+	border-color: #035;
+}
+
+/*logout button*/
+.btn-outline-primary {
+	color: #fff;
+	background-color: transparent;
+	border-color: #fff;
+}
+
+.btn-outline-primary:hover {
+	color: #035;
+	background-color: #fff;
+	border-color: #fff;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle {
+	color: #035;
+	background-color: #ccc;
+	border-color: #ccc;
+}
+
+.list-group-item-primary{
+	color:#fff;
+	background-color:#035;
+}
+
+.hover-pointer:hover {
+	cursor: pointer;
+}
