@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { StudentThesisResponseModel } from 'src/app/student/thesis/thesis.model';
 import { StudentMeetingListResponseItem } from 'src/app/student/student-meetings/student-meetings.model';
-import { ProfessorThesisListResponseItem } from 'src/app/professor/professor-thesis-list/professor-thesis-list.model';
+import { ProfessorThesisListResponseItem, ReportResponseListItem } from 'src/app/professor/professor-thesis-list/professor-thesis-list.model';
 import { ProfessorGradeThesisRequestModel, ProfessorThesisResponseModel } from 'src/app/professor/professor-thesis-page/thesis-view/thesis-view.model';
 import { CreateMeetingRequestModel, ProfessorMeetingInfoResponseModel, ProfessorMeetingListResponseItem } from 'src/app/professor/professor-thesis-page/meetings-view/meetings-view.model';
 import { ProfessorFileListResponseItem } from 'src/app/professor/professor-thesis-page/file-view/file-view.model';
@@ -71,5 +71,10 @@ export class DataAccessService {
       responseType: 'blob',
       observe: 'response'
     });
+  }
+
+  getReport() {
+    return this.http.get<ReportResponseListItem[]>('api/v1/professor/thesis/report')
+    .pipe(map(response => { return response }));
   }
 }

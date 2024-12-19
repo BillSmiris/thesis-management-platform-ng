@@ -22,13 +22,18 @@ export class IdentityService {
     const token = localStorage.getItem('idtkn');
     if (token) {
       this.decodeToken(token);
-      this._isAuthorised = true;
       await this.getUserData();
+      if(!this._personalData) {
+        this.router.navigate(['/login'], { replaceUrl: true });
+        localStorage.clear();
+        return;
+      }
       if(this._role === "STUDENT") {
         this.router.navigate(['/student'], { replaceUrl: true });
       } else if(this._role === "PROFESSOR") {
         this.router.navigate(['/professor'], { replaceUrl: true });
       }
+      this._isAuthorised = true;
     } else {
       this.router.navigate(['/login'], { replaceUrl: true });
     }
@@ -56,13 +61,13 @@ export class IdentityService {
       if (token) {
         localStorage.setItem('idtkn', token);
         this.decodeToken(token);
-        this._isAuthorised = true;
         await this.getUserData();
         if(this._role === "STUDENT") {
           this.router.navigate(['/student'], { replaceUrl: true });
         } else if(this._role === "PROFESSOR") {
           this.router.navigate(['/professor'], { replaceUrl: true });
         }
+        this._isAuthorised = true;
       }
     } catch (error) {
       console.log('Login error:', error);
@@ -97,7 +102,7 @@ export class IdentityService {
     this._username = undefined;
     this._role = undefined;
     this._personalData = undefined;
-    localStorage.removeItem('idtkn');
+    localStorage.clear();
     this._isAuthorised = false;
     this.router.navigate(['/login'], { replaceUrl: true });
   }
