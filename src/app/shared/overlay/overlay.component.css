@@ -1,0 +1,40 @@
+.overlay {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+header {
+    height: 10%;
+    max-height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 2rem;
+    color: #ddd;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .x {
+    font-size: 3rem;
+}
+
+header .x:hover {
+    cursor: pointer;
+}
+
+.overlay-main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

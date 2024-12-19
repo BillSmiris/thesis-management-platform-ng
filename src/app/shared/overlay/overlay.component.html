@@ -1,0 +1,9 @@
+<div class="overlay">
+    <header>
+        <span class="h1">{{ title }}</span>
+        <span class="x" (click)="onClose()">x</span>
+    </header>
+    <div class="overlay-main">
+        <ng-content></ng-content>
+    </div>
+</div>

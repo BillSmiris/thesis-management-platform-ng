@@ -27,5 +27,5 @@ export class StudentMeetingsComponent {
         this.error = true;
       }
     );
-  }
+  } 
 }

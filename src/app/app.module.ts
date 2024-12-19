@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { StudentComponent } from './student/student.component';
 import { ProfessorComponent } from './professor/professor.component';
@@ -16,6 +16,7 @@ import { ProfessorThesisListComponent } from './professor/professor-thesis-list/
 import { ProfessorThesisPageComponent } from './professor/professor-thesis-page/professor-thesis-page.component';
 import { ThesisViewComponent } from './professor/professor-thesis-page/thesis-view/thesis-view.component';
 import { MeetingsViewComponent } from './professor/professor-thesis-page/meetings-view/meetings-view.component';
+import { OverlayComponent } from './shared/overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MeetingsViewComponent } from './professor/professor-thesis-page/meeting
     ProfessorThesisListComponent,
     ProfessorThesisPageComponent,
     ThesisViewComponent,
-    MeetingsViewComponent
+    MeetingsViewComponent,
+    OverlayComponent,
   ],
   imports: [
     BrowserModule,
