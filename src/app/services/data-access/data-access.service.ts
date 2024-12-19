@@ -6,6 +6,7 @@ import { StudentMeetingListResponseItem } from 'src/app/student/student-meetings
 import { ProfessorThesisListResponseItem } from 'src/app/professor/professor-thesis-list/professor-thesis-list.model';
 import { ProfessorGradeThesisRequestModel, ProfessorThesisResponseModel } from 'src/app/professor/professor-thesis-page/thesis-view/thesis-view.model';
 import { CreateMeetingRequestModel, ProfessorMeetingInfoResponseModel, ProfessorMeetingListResponseItem } from 'src/app/professor/professor-thesis-page/meetings-view/meetings-view.model';
+import { ProfessorFileListResponseItem } from 'src/app/professor/professor-thesis-page/file-view/file-view.model';
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +59,17 @@ export class DataAccessService {
 
   uploadFile(formData: FormData) {
     return this.http.post("api/v1/student/file", formData);
+  }
+
+  getThesisFiles(id: number) {
+    return this.http.get<ProfessorFileListResponseItem[]>(`api/v1/professor/file/thesis/${id}`)
+    .pipe(map(response => { return response }));
+  }
+
+  getFile(id: number) {
+    return this.http.get(`api/v1/professor/file/${id}`, {
+      responseType: 'blob',
+      observe: 'response'
+    });
   }
 }

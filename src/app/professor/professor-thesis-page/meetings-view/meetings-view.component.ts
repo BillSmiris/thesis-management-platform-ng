@@ -40,7 +40,6 @@ export class MeetingsViewComponent {
     this.dataAccess.getProfessorMeetingsForThesis(+this.thesisId!).subscribe(response => {
       this.meetings = response;
       this.fetched = true;
-      console.log(this.meetings);
     },
       (error) => {
         this.fetched = false;

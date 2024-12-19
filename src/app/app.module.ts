@@ -17,6 +17,7 @@ import { ProfessorThesisPageComponent } from './professor/professor-thesis-page/
 import { ThesisViewComponent } from './professor/professor-thesis-page/thesis-view/thesis-view.component';
 import { MeetingsViewComponent } from './professor/professor-thesis-page/meetings-view/meetings-view.component';
 import { OverlayComponent } from './shared/overlay/overlay.component';
+import { FileViewComponent } from './professor/professor-thesis-page/file-view/file-view.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { OverlayComponent } from './shared/overlay/overlay.component';
     ThesisViewComponent,
     MeetingsViewComponent,
     OverlayComponent,
+    FileViewComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<div *ngIf="fetched then retrievedBlock else notRetrievedBlock"></div>
+<ng-template #retrievedBlock>
+    <div *ngIf="files.length > 0 then hasFiles else noFiles"></div>
+    <ng-template #hasFiles>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-primary text-center">
+                <div class="row">
+                    <div class="col-8">Name</div>
+                    <div class="col-4">Timestamp</div>
+                </div>
+            </li>
+            <li *ngFor="let file of files" class="list-group-item list-group-item-action text-center hover-pointer" (click)="download(file.id)">
+                <div class="row">
+                    <div class="col-8">{{ file.name }}</div>
+                    <div class="col-4">{{ file.timestamp | date:'MM/dd/yyy HH:mm:ss' }}</div>
+                </div>
+            </li>
+        </ul>
+    </ng-template>
+    <ng-template #noFiles>
+        There are no files for this thesis.
+    </ng-template>
+</ng-template>
+<ng-template #notRetrievedBlock>
+    <div *ngIf="!error then noErrorBlock else errorBlock"></div>
+    <ng-template #noErrorBlock>
+        Loading...
+    </ng-template>
+    <ng-template #errorBlock>
+        There was an error retrieving the files!
+    </ng-template>
+</ng-template>
