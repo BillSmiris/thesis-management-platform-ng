@@ -10,3 +10,8 @@ export interface ProfessorThesisResponseModel {
     studentEmail: string;
     studentPhoneNumber: string;
 }
+
+export interface ProfessorGradeThesisRequestModel {
+    id: number;
+    grade: number;
+}

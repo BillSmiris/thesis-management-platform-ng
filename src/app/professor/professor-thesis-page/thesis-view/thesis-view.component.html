@@ -5,7 +5,8 @@
         <p>
             <strong>Title:</strong> {{ thesis!.title }}<br>
             <strong>Start Date:</strong> {{ thesis!.startDate }}<br>
-            <strong>Final Grade:</strong> {{ thesis!.finalGrade }}
+            <strong>Final Grade:</strong> {{ thesis!.finalGrade }}<br>
+            <button class="btn btn-primary mt-1" (click)="onGrade()">Grade</button>
         </p>
 
         <div class="mb-3">
@@ -36,6 +37,18 @@
                 <a [href]="'tel:' + thesis!.studentPhoneNumber">{{ thesis!.studentPhoneNumber }}</a>
             </p>
         </div>
+
+        <app-overlay *ngIf="grade" (close)="onOverlayClose()">
+            <app-card title="Grade Thesis" width="400px">
+                <div class="mb-3">
+                    <label for="grade" class="form-label">Enter grade:</label>
+                    <input class="form-control" id="grade" name="grade" #grade />
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" (click)="onOk(+grade.value)">OK</button>
+                </div>
+            </app-card>
+        </app-overlay>
     </ng-template>
     <ng-template #noThesis>
         There is no available thesis.

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProfessorThesisResponseModel } from './thesis-view.model';
+import { ProfessorGradeThesisRequestModel, ProfessorThesisResponseModel } from './thesis-view.model';
 import { DataAccessService } from 'src/app/services/data-access/data-access.service';
 
 @Component({
@@ -16,21 +16,49 @@ export class ThesisViewComponent implements OnInit {
   error: boolean = false;
   thesis?: ProfessorThesisResponseModel;
 
+  grade: boolean = false;
+
   ngOnInit(): void {
     if(this.thesisId) {
-      this.fetched = false;
-      this.error = false;
-      console.log(this.thesisId)
-      this.dataAccess.getProfessorThesisById(+this.thesisId).subscribe(response => {
-        this.thesis = response;
-        this.fetched = true;
-        console.log(this.thesis);
-      },
-        (error) => {
-          this.fetched = false;
-          this.error = true;
-        }
-      );
+      this.fetchThesis();
     }
+  }
+
+  fetchThesis() {
+    this.fetched = false;
+    this.error = false;
+    console.log(this.thesisId)
+    this.dataAccess.getProfessorThesisById(+this.thesisId!).subscribe(response => {
+      this.thesis = response;
+      this.fetched = true;
+    },
+      (error) => {
+        this.fetched = false;
+        this.error = true;
+      }
+    );
+  }
+
+  onOverlayClose() {
+    this.grade = false;
+  }
+
+  onGrade() {
+    this.grade = true;
+  }
+
+  onOk(grade: number) {
+    const gradeThesisModel: ProfessorGradeThesisRequestModel = {
+      id: +this.thesisId!,
+      grade: grade
+    }
+    this.dataAccess.gradeThesis(gradeThesisModel).subscribe(response => {
+      this.onOverlayClose();
+      this.fetchThesis();
+    },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

@@ -28,11 +28,19 @@
 
         <div class="mt-4">
             <h6 class="text-secondary">Supervisor Information:</h6>
-            <p class="card-text">
+            <p>
                 <strong>Name:</strong> {{ thesis!.supervisorFirstName }} {{ thesis!.supervisorLastName }}<br>
-                <strong>Email: </strong> 
+                <strong>Email: </strong>
                 <a [href]="'mailto:' + thesis!.supervisorEmail">{{ thesis!.supervisorEmail }}</a>
             </p>
+        </div>
+
+        <div class="mt-4">
+            <h6 class="text-secondary">Upload File:</h6>
+            <form (ngSubmit)="uploadFile()" enctype="multipart/form-data">
+                <input class="form-control" type="file" (change)="onFileSelected($event)" />
+                <button class="btn btn-primary mt-2" type="submit" [disabled]="!selectedFile">Upload</button>
+            </form>
         </div>
     </ng-template>
     <ng-template #noThesis>

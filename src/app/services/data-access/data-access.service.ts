@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { StudentThesisResponseModel } from 'src/app/student/thesis/thesis.model';
 import { StudentMeetingListResponseItem } from 'src/app/student/student-meetings/student-meetings.model';
 import { ProfessorThesisListResponseItem } from 'src/app/professor/professor-thesis-list/professor-thesis-list.model';
-import { ProfessorThesisResponseModel } from 'src/app/professor/professor-thesis-page/thesis-view/thesis-view.model';
+import { ProfessorGradeThesisRequestModel, ProfessorThesisResponseModel } from 'src/app/professor/professor-thesis-page/thesis-view/thesis-view.model';
 import { CreateMeetingRequestModel, ProfessorMeetingInfoResponseModel, ProfessorMeetingListResponseItem } from 'src/app/professor/professor-thesis-page/meetings-view/meetings-view.model';
 
 @Injectable({
@@ -50,5 +50,13 @@ export class DataAccessService {
 
   saveMeeting(model: ProfessorMeetingInfoResponseModel){
     return this.http.post("api/v1/professor/meeting/notes", model);
+  }
+
+  gradeThesis(model: ProfessorGradeThesisRequestModel) {
+    return this.http.post("api/v1/professor/thesis/grade", model);
+  }
+
+  uploadFile(formData: FormData) {
+    return this.http.post("api/v1/student/file", formData);
   }
 }
